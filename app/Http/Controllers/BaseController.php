@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class BaseController extends Controller {
 
     protected $service;
+
+    protected $dataObject;
    
     public function index(Request $request)
     {
@@ -19,8 +21,9 @@ class BaseController extends Controller {
         return response()->json($data);
     }
 
-    public function post(Request $request){
-        $data = $this->service->save($request);
+    public function store(Request $request){
+        $dto = $this->dataObject::from($request);
+        $data = $this->service->save($dto);
         return response()->json(['data' => $data], 201);
     }
 
@@ -30,9 +33,10 @@ class BaseController extends Controller {
         return response()->json(['data' => $data], 200);
     }
 
-    public function put(Request $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = $this->service->update($request, $id);
+        $dto = $this->dataObject::from($request);
+        $data = $this->service->update($dto, $id);
         return response()->json(['data' => $data, 'message' => 'Resource updated successfully'], 200);
     }
 

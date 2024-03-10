@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Http\Requests\CategoryRequest;
+use App\Data\Category as CategoryData;
 use App\Repository\Contract\CategoryInterface;
 use App\Models\Category as CategoryModel;
 
@@ -15,8 +15,8 @@ class Category implements CategoryInterface {
                             ->paginate($perPage,['*'], 'page', $currentPage);
     }
 
-    public function save(CategoryRequest $request){
-        $category = CategoryModel::create($request->all());
+    public function save(CategoryData $categoryData){
+        $category = CategoryModel::create($categoryData->all());
         return $category;
     }
 
@@ -24,9 +24,9 @@ class Category implements CategoryInterface {
         return CategoryModel::findorFail($id);
     }
 
-    public function update(CategoryRequest $request, string $id){
+    public function update(CategoryData $categoryData, string $id){
         $category = CategoryModel::findOrFail($id);
-        $category->update($request->all());
+        $category->update($categoryData->all());
         return $category;
     }
 

@@ -3,7 +3,7 @@
 namespace App\Service\Category;
 
 use App\Repository\Contract\CategoryInterface;
-use App\Http\Requests\CategoryRequest;
+use App\Data\Category;
 
 class CategoryServiceImpl implements CategoryService {
 
@@ -19,16 +19,16 @@ class CategoryServiceImpl implements CategoryService {
         return $this->repository->getAll($perPage, $page, $sortBy, $sortDirection, $search);
     }
     
-    public function save(CategoryRequest $request){
-        return $this->repository->save($request);
+    public function save(Category $category){
+        return $this->repository->save($category);
     }
 
     public function get(string $id){
         return $this->repository->get($id);
     }
 
-    public function update(CategoryRequest $request, string $id){
-        return $this->repository->update($request, $id);
+    public function update(Category $category, string $id){
+        return $this->repository->update($category, $id);
     }
 
     public function delete(string $id){
