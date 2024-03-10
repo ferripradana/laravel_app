@@ -32,15 +32,6 @@ Route::group([
 
 Route::group([
     'middleware' => 'App\Http\Middleware\Authenticate',
-    'prefix' => 'test'
-], function ($router) {
-    Route::get('/', function () {
-        return auth()->user();
-    });
-});
-
-Route::group([
-    'middleware' => 'App\Http\Middleware\Authenticate',
     'prefix' => 'category',
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
