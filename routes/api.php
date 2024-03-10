@@ -44,11 +44,11 @@ Route::group([
     'prefix' => 'category',
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
-    Route::get('/', 'CategoryController@index');
-    Route::post('/', 'CategoryController@store');
-    Route::get('/{id}', 'CategoryController@show');
-    Route::put('/{id}', 'CategoryController@update');
-    Route::delete('/{id}', 'CategoryController@destroy');
+    Route::get('/', 'CategoryController@index')->middleware('permission:category.view');
+    Route::post('/', 'CategoryController@store')->middleware('permission:category.create');
+    Route::get('/{id}', 'CategoryController@show')->middleware('permission:category.view');
+    Route::put('/{id}', 'CategoryController@update')->middleware('permission:category.edit');
+    Route::delete('/{id}', 'CategoryController@destroy')->middleware('permission:category.delete');
 });
 
 
