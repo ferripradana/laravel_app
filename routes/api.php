@@ -64,6 +64,7 @@ Route::group([
     Route::get('/{id}', 'RoleController@show')->middleware('permission:role.view');
     Route::put('/{id}', 'RoleController@update')->middleware('permission:role.edit');
     Route::delete('/{id}', 'RoleController@destroy')->middleware('permission:role.delete');
+    Route::put('/{id}/permission', 'RoleController@savePermission')->middleware('permission:role.edit');
 });
 
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Service\Role\RoleService;
+use Illuminate\Http\Request;
+use App\Data\Update\RolePermission;
 
 class RoleController extends BaseController
 {   
@@ -11,5 +13,10 @@ class RoleController extends BaseController
     ){
         $this->dataObject = "App\Data\Role";
         $this->service = $roleService;
+    }
+
+    public function savePermission(Request $request, string $id){
+        $data = RolePermission::from($request);
+        return $this->service->savePermission($data, $id);
     }
 }
