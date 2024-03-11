@@ -54,5 +54,17 @@ Route::group([
     Route::delete('/{id}', 'UserController@destroy')->middleware('permission:user.delete');
 });
 
+Route::group([
+    'middleware' => 'App\Http\Middleware\Authenticate',
+    'prefix' => 'role',
+    'namespace' => 'App\Http\Controllers',
+], function ($router) {
+    Route::get('/', 'RoleController@index')->middleware('permission:role.view');
+    Route::post('/', 'RoleController@store')->middleware('permission:role.create');
+    Route::get('/{id}', 'RoleController@show')->middleware('permission:role.view');
+    Route::put('/{id}', 'RoleController@update')->middleware('permission:role.edit');
+    Route::delete('/{id}', 'RoleController@destroy')->middleware('permission:role.delete');
+});
+
 
 
