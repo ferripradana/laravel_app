@@ -48,7 +48,7 @@ class User implements UserInterface {
     }
 
     public function delete(string $id){
-        $category = UserModel::findOrFail($id);
-        $category->delete();
+        $user = UserModel::findOrFail($id);
+        $user->delete();
     }
 }
