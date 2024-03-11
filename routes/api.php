@@ -67,5 +67,18 @@ Route::group([
     Route::put('/{id}/permission', 'RoleController@savePermission')->middleware('permission:role.edit');
 });
 
+Route::group([
+    'middleware' => 'App\Http\Middleware\Authenticate',
+    'prefix' => 'permission',
+    'namespace' => 'App\Http\Controllers',
+], function ($router) {
+    Route::get('/', 'PermissionController@index')->middleware('permission:permission.view');
+    Route::post('/', 'PermissionController@store')->middleware('permission:permission.create');
+    Route::get('/{id}', 'PermissionController@show')->middleware('permission:permission.view');
+    Route::put('/{id}', 'PermissionController@update')->middleware('permission:permission.edit');
+    Route::delete('/{id}', 'PermissionController@destroy')->middleware('permission:permission.delete');
+    Route::put('/{id}/permission', 'PermissionController@savePermission')->middleware('permission:permission.edit');
+});
+
 
 

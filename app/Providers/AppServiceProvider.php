@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(\App\Service\Category\CategoryService::class, \App\Service\Category\CategoryServiceImpl::class);
         $this->app->bind(\App\Service\User\UserService::class, \App\Service\User\UserServiceImpl::class);
         $this->app->bind(\App\Service\Role\RoleService::class, \App\Service\Role\RoleServiceImpl::class);
+        $this->app->bind(\App\Service\Permission\PermissionService::class, \App\Service\Permission\PermissionServiceImpl::class);
     }
 
     /**
