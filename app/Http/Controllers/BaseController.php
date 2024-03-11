@@ -10,8 +10,7 @@ class BaseController extends Controller {
 
     protected $dataObject;
    
-    public function index(Request $request)
-    {
+    public function index(Request $request){
         $perPage = $request->query('per_page',10);
         $page = $request->query('page',1);
         $sortBy = $request->query('sort_by', 'id');
@@ -27,14 +26,12 @@ class BaseController extends Controller {
         return response()->json(['data' => $data], 201);
     }
 
-    public function show(string $id)
-    {
+    public function show(string $id){
         $data = $this->service->get($id);
         return response()->json(['data' => $data], 200);
     }
 
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, string $id){
         $dto = $this->dataObject::from($request);
         $data = $this->service->update($dto, $id);
         return response()->json(['data' => $data, 'message' => 'Resource updated successfully'], 200);

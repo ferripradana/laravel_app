@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Models\Role;
+use App\Models\RoleUser;
 
 class User extends Authenticatable implements JWTSubject
 {

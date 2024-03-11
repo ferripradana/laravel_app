@@ -42,5 +42,17 @@ Route::group([
     Route::delete('/{id}', 'CategoryController@destroy')->middleware('permission:category.delete');
 });
 
+Route::group([
+    'middleware' => 'App\Http\Middleware\Authenticate',
+    'prefix' => 'user',
+    'namespace' => 'App\Http\Controllers',
+], function ($router) {
+    Route::get('/', 'UserController@index')->middleware('permission:user.view');
+    Route::post('/', 'UserController@store')->middleware('permission:user.create');
+    Route::get('/{id}', 'UserController@show')->middleware('permission:user.view');
+    Route::put('/{id}', 'UserController@update')->middleware('permission:user.edit');
+    Route::delete('/{id}', 'UserController@destroy')->middleware('permission:user.delete');
+});
+
 
 

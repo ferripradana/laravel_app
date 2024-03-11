@@ -5,11 +5,13 @@ namespace App\Enums;
 enum RolesEnum: string {
     case ADMIN = "admin";
     case STAFF = "staff";
+    case NO = "no";
     
     public function label(): string{
         return match ($this) {
-            static::ADMIN => 'Admins',
-            static::STAFF => 'Staffs',
+            static::ADMIN => 'Admin',
+            static::STAFF => 'Staff',
+            static::NO => 'No Role'
         };
     }
 }
