@@ -13,6 +13,7 @@ class User extends Data {
         public string $name,
         public ?Collection $roles,
     ){   
-        $this->roles = Role::collect($roles);
+        if(!empty($roles))
+            $this->roles = Role::collect($roles);
     }
 }
